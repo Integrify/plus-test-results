@@ -5,9 +5,9 @@
         "passes": 18,
         "pending": 0,
         "failures": 0,
-        "start": "2020-12-17T15:42:35.029Z",
-        "end": "2020-12-17T15:42:35.029Z",
-        "duration": 518,
+        "start": "2020-12-17T15:47:37.853Z",
+        "end": "2020-12-17T15:47:37.853Z",
+        "duration": 531,
         "testsRegistered": 19,
         "passPercent": 94.73684210526316,
         "pendingPercent": 0,
@@ -18,7 +18,7 @@
     },
     "results": [
         {
-            "uuid": "b59ef5c4-be6f-47a4-b72d-03189ab9417a",
+            "uuid": "0f233f71-6727-4799-9ccc-d90141c465ab",
             "title": "",
             "fullFile": "",
             "file": "",
@@ -36,8 +36,8 @@
                     "context": null,
                     "code": "// insert known tokens into redis (normally these are created by emailPasswordReset)\nconst mockRes = mocks.mockResponse();\nconst mockReq = await mocks.emailPasswordReset();\nawait redisClient.setexAsync(`pwReset:${accountGuid}`, 3600, securityToken);\nawait redisClient.setexAsync(`pwReset:${securityToken}`, 3600, accountGuid);",
                     "err": {},
-                    "uuid": "5698b4f4-884b-4ee4-ad58-7a330667dcff",
-                    "parentUUID": "b59ef5c4-be6f-47a4-b72d-03189ab9417a",
+                    "uuid": "fd9af30e-bfb0-41d1-add1-d3532096f3a5",
+                    "parentUUID": "0f233f71-6727-4799-9ccc-d90141c465ab",
                     "isHook": true,
                     "skipped": false
                 }
@@ -57,15 +57,15 @@
                     "context": null,
                     "code": "const mockReq = mocks.createNewPassword(securityToken);\nconst mockRes = mocks.mockResponse();\nawait resetPassword.createNewPassword(mockReq, mockRes);\nexpect(mockRes.statusCode).equal(200);\nexpect(mockRes.body).to.exist;\n// ensure createNewPassword cleans up redis\nexpect(await redisClient.getAsync(`pwReset:${accountGuid}`)).to.be.null;\nexpect(await redisClient.getAsync(`pwReset:${securityToken}`)).to.be.null;",
                     "err": {},
-                    "uuid": "0435ac72-403d-4d92-b2ca-d91089a3d849",
-                    "parentUUID": "b59ef5c4-be6f-47a4-b72d-03189ab9417a",
+                    "uuid": "74c1afd7-285b-43aa-9e25-921fd78c3f69",
+                    "parentUUID": "0f233f71-6727-4799-9ccc-d90141c465ab",
                     "isHook": false,
                     "skipped": true
                 }
             ],
             "suites": [
                 {
-                    "uuid": "ff72fbe7-6a52-48c3-a40e-ca9a7a48e506",
+                    "uuid": "2b85fad3-1523-4a2a-bef7-980be2383476",
                     "title": "Auth API API Key Tests",
                     "fullFile": "/home/rich/integrify/1_PLUS/api-auth/test/integration/functions/apiKey.test.js",
                     "file": "/test/integration/functions/apiKey.test.js",
@@ -74,7 +74,7 @@
                             "title": "\"before all\" hook in \"Auth API API Key Tests\"",
                             "fullTitle": "Auth API API Key Tests \"before all\" hook in \"Auth API API Key Tests\"",
                             "timedOut": false,
-                            "duration": 5,
+                            "duration": 4,
                             "state": null,
                             "speed": null,
                             "pass": false,
@@ -83,8 +83,8 @@
                             "context": null,
                             "code": "this.timeout(105000);\ntestConfig = await mocks.getTestConfig()",
                             "err": {},
-                            "uuid": "74f309c0-c157-4bb7-a4e0-36007e76ddb4",
-                            "parentUUID": "ff72fbe7-6a52-48c3-a40e-ca9a7a48e506",
+                            "uuid": "9ddacb02-2b26-4fac-a2b3-d9948947cd56",
+                            "parentUUID": "2b85fad3-1523-4a2a-bef7-980be2383476",
                             "isHook": true,
                             "skipped": false
                         }
@@ -103,8 +103,8 @@
                             "context": null,
                             "code": "await apiKey.deleteTestKeys(testConfig.tenantOne.tenantId);",
                             "err": {},
-                            "uuid": "7f31206b-3e9b-46b1-871a-33f935505a32",
-                            "parentUUID": "ff72fbe7-6a52-48c3-a40e-ca9a7a48e506",
+                            "uuid": "913b9bc8-188d-4c07-91d7-d3ee82cf0e87",
+                            "parentUUID": "2b85fad3-1523-4a2a-bef7-980be2383476",
                             "isHook": true,
                             "skipped": false
                         }
@@ -112,7 +112,7 @@
                     "tests": [],
                     "suites": [
                         {
-                            "uuid": "e1817010-f9d4-44d0-9ca6-add7c13d5748",
+                            "uuid": "70bf8ac0-f991-4761-b2a6-6de4d236fd1d",
                             "title": "api key crud ",
                             "fullFile": "/home/rich/integrify/1_PLUS/api-auth/test/integration/functions/apiKey.test.js",
                             "file": "/test/integration/functions/apiKey.test.js",
@@ -132,8 +132,8 @@
                                     "context": null,
                                     "code": "const mockRes = await mocks.mockResponse();\nconst req = await mocks.req();\nreq.body = {expires: new Date(new Date().getTime() + 60000), testOnly: true, description: \"this is a test\"}\nawait apiKey.createApiKey(req, mockRes);\nexpect(mockRes.statusCode).to.equal(200);\nconst inserted = mockRes.body;\nkey = inserted.key;\nid = inserted._id;\nexpect(inserted).to.exist;",
                                     "err": {},
-                                    "uuid": "db6d23cf-d322-4687-b1cd-b488df46cc7a",
-                                    "parentUUID": "e1817010-f9d4-44d0-9ca6-add7c13d5748",
+                                    "uuid": "3aed0885-017b-41a4-98af-2bb1b1468dc8",
+                                    "parentUUID": "70bf8ac0-f991-4761-b2a6-6de4d236fd1d",
                                     "isHook": false,
                                     "skipped": false
                                 },
@@ -150,8 +150,8 @@
                                     "context": null,
                                     "code": "const mockRes = await mocks.mockResponse();\nconst req = await mocks.req();\nreq.params.key = key;\nawait apiKey.listApiKeys(req, mockRes);\nexpect(mockRes.statusCode).to.equal(200);\nconst keyList = mockRes.body;\nexpect(keyList).to.exist;\nexpect(keyList.length).to.be.gt(0);\nexpect(keyList[0].hashedKey).to.exist",
                                     "err": {},
-                                    "uuid": "2cdfe5b3-6870-44cd-86a6-459ba7a1e27f",
-                                    "parentUUID": "e1817010-f9d4-44d0-9ca6-add7c13d5748",
+                                    "uuid": "36956258-b73a-4e7c-bc25-824059ceacaa",
+                                    "parentUUID": "70bf8ac0-f991-4761-b2a6-6de4d236fd1d",
                                     "isHook": false,
                                     "skipped": false
                                 },
@@ -168,8 +168,8 @@
                                     "context": null,
                                     "code": "const mockRes = await mocks.mockResponse();\nconst req = await mocks.req();\nreq.params.key = key;\nreq.params.tenant = testConfig.tenantOne.tenantId;\nawait apiKey.verifyApiKey(req, mockRes);\nexpect(mockRes.statusCode).to.equal(200);\nconst deleted = mockRes.body;\nexpect(deleted.message).to.equal(\"api key valid\");",
                                     "err": {},
-                                    "uuid": "766a5dd4-9bbc-4cf7-b609-d572af15f00f",
-                                    "parentUUID": "e1817010-f9d4-44d0-9ca6-add7c13d5748",
+                                    "uuid": "697636db-a668-4517-9bd6-f34d3be0030d",
+                                    "parentUUID": "70bf8ac0-f991-4761-b2a6-6de4d236fd1d",
                                     "isHook": false,
                                     "skipped": false
                                 },
@@ -177,7 +177,7 @@
                                     "title": "should  impersonate using a valid api key and return a JWT",
                                     "fullTitle": "Auth API API Key Tests api key crud  should  impersonate using a valid api key and return a JWT",
                                     "timedOut": false,
-                                    "duration": 169,
+                                    "duration": 162,
                                     "state": "passed",
                                     "speed": "slow",
                                     "pass": true,
@@ -186,8 +186,8 @@
                                     "context": null,
                                     "code": "const mockRes = await mocks.mockResponse();\nconst req = await mocks.req();\nreq.params.key = key;\nreq.params.tenant = testConfig.tenantOne.tenantId;\nreq.params.userName = testConfig.tenantOne.adminUser.userName;\nawait apiKey.impersonate(req, mockRes);\nexpect(mockRes.statusCode).to.equal(200);\nconst impersonated = mockRes.body;\nexpect(impersonated).to.exist;\nexpect(impersonated.token).to.exist;\nexpect(impersonated.userName).to.equal(testConfig.tenantOne.adminUser.userName);",
                                     "err": {},
-                                    "uuid": "441fc797-18dc-4bc5-ab04-7b8b08290fe4",
-                                    "parentUUID": "e1817010-f9d4-44d0-9ca6-add7c13d5748",
+                                    "uuid": "ef2f1097-e75b-43b9-8774-458c36d8ba92",
+                                    "parentUUID": "70bf8ac0-f991-4761-b2a6-6de4d236fd1d",
                                     "isHook": false,
                                     "skipped": false
                                 },
@@ -195,7 +195,7 @@
                                     "title": "should  impersonate using a valid env token and return a JWT",
                                     "fullTitle": "Auth API API Key Tests api key crud  should  impersonate using a valid env token and return a JWT",
                                     "timedOut": false,
-                                    "duration": 14,
+                                    "duration": 12,
                                     "state": "passed",
                                     "speed": "fast",
                                     "pass": true,
@@ -204,8 +204,8 @@
                                     "context": null,
                                     "code": "const mockRes = await mocks.mockResponse();\nconst req = await mocks.req();\n\n\nreq.params.tenant = testConfig.tenantOne.tenantId;\nreq.params.userName = testConfig.tenantOne.adminUser.userName;\nawait apiKey.impersonateWithSystemApiKey(req, mockRes);\nexpect(mockRes.statusCode).to.equal(200);\nconst impersonated = mockRes.body;\nexpect(impersonated).to.exist;\nexpect(impersonated.token).to.exist;\nexpect(impersonated.userName).to.equal(testConfig.tenantOne.adminUser.userName);",
                                     "err": {},
-                                    "uuid": "b942deca-eb11-4943-bcb9-bbfc3d323105",
-                                    "parentUUID": "e1817010-f9d4-44d0-9ca6-add7c13d5748",
+                                    "uuid": "8f843dca-f80f-48a2-8fda-527af38b4e96",
+                                    "parentUUID": "70bf8ac0-f991-4761-b2a6-6de4d236fd1d",
                                     "isHook": false,
                                     "skipped": false
                                 },
@@ -213,7 +213,7 @@
                                     "title": "should delete an apiKey and return a doc",
                                     "fullTitle": "Auth API API Key Tests api key crud  should delete an apiKey and return a doc",
                                     "timedOut": false,
-                                    "duration": 6,
+                                    "duration": 5,
                                     "state": "passed",
                                     "speed": "fast",
                                     "pass": true,
@@ -222,25 +222,25 @@
                                     "context": null,
                                     "code": "const mockRes = await mocks.mockResponse();\nconst req = await mocks.req();\nreq.params.id = id;\nawait apiKey.deleteApiKey(req, mockRes);\nexpect(mockRes.statusCode).to.equal(200);\nconst deleted = mockRes.body;\nexpect(deleted.message).to.equal(\"delete successful\");",
                                     "err": {},
-                                    "uuid": "b48d1612-616a-4bb3-8fdf-a3b82af8aead",
-                                    "parentUUID": "e1817010-f9d4-44d0-9ca6-add7c13d5748",
+                                    "uuid": "9770ac2c-ab36-4370-976e-3e2493425bd3",
+                                    "parentUUID": "70bf8ac0-f991-4761-b2a6-6de4d236fd1d",
                                     "isHook": false,
                                     "skipped": false
                                 }
                             ],
                             "suites": [],
                             "passes": [
-                                "db6d23cf-d322-4687-b1cd-b488df46cc7a",
-                                "2cdfe5b3-6870-44cd-86a6-459ba7a1e27f",
-                                "766a5dd4-9bbc-4cf7-b609-d572af15f00f",
-                                "441fc797-18dc-4bc5-ab04-7b8b08290fe4",
-                                "b942deca-eb11-4943-bcb9-bbfc3d323105",
-                                "b48d1612-616a-4bb3-8fdf-a3b82af8aead"
+                                "3aed0885-017b-41a4-98af-2bb1b1468dc8",
+                                "36956258-b73a-4e7c-bc25-824059ceacaa",
+                                "697636db-a668-4517-9bd6-f34d3be0030d",
+                                "ef2f1097-e75b-43b9-8774-458c36d8ba92",
+                                "8f843dca-f80f-48a2-8fda-527af38b4e96",
+                                "9770ac2c-ab36-4370-976e-3e2493425bd3"
                             ],
                             "failures": [],
                             "pending": [],
                             "skipped": [],
-                            "duration": 247,
+                            "duration": 237,
                             "root": false,
                             "rootEmpty": false,
                             "_timeout": 2000
@@ -256,7 +256,7 @@
                     "_timeout": 2000
                 },
                 {
-                    "uuid": "e7ccc743-21be-4379-8f7e-3463baa7cccc",
+                    "uuid": "0f0740c9-5a4c-44c4-9b85-f76c483a6431",
                     "title": "Auth API Auth Tests",
                     "fullFile": "/home/rich/integrify/1_PLUS/api-auth/test/integration/functions/auth.test.js",
                     "file": "/test/integration/functions/auth.test.js",
@@ -274,8 +274,8 @@
                             "context": null,
                             "code": "this.timeout(105000);",
                             "err": {},
-                            "uuid": "36ab855d-8ca6-456d-b22a-6420d43114c5",
-                            "parentUUID": "e7ccc743-21be-4379-8f7e-3463baa7cccc",
+                            "uuid": "bf312cfc-afc3-4a5d-b953-84e41c0db826",
+                            "parentUUID": "0f0740c9-5a4c-44c4-9b85-f76c483a6431",
                             "isHook": true,
                             "skipped": false
                         }
@@ -284,7 +284,7 @@
                     "tests": [],
                     "suites": [
                         {
-                            "uuid": "aeb9d6f0-3ed4-47b3-af77-a3dc4229e34d",
+                            "uuid": "f4ec048b-3540-4f69-9687-1757bfa54b51",
                             "title": "login",
                             "fullFile": "/home/rich/integrify/1_PLUS/api-auth/test/integration/functions/auth.test.js",
                             "file": "/test/integration/functions/auth.test.js",
@@ -295,7 +295,7 @@
                                     "title": "should return a contact with a token",
                                     "fullTitle": "Auth API Auth Tests login should return a contact with a token",
                                     "timedOut": false,
-                                    "duration": 113,
+                                    "duration": 125,
                                     "state": "passed",
                                     "speed": "slow",
                                     "pass": true,
@@ -304,26 +304,26 @@
                                     "context": null,
                                     "code": "const mockRes = await mocks.mockResponse();\n\t\t\tlet loginEvent = await mocks.loginEvent()\n\t\t\tlet results = await dbauth.login(loginEvent, mockRes);\n\t\t\texpect(mockRes.statusCode).equal(200);\n\t\t\texpect(mockRes.body).to.exist;\n\t\t\tconst contactInfo = mockRes.body;\n\t\t\texpect(contactInfo.userName).equal(loginEvent.body.username);\n\t\t\texpect(contactInfo.token).to.exist;",
                                     "err": {},
-                                    "uuid": "b6555178-f40d-48c9-97e2-5292a3a8a799",
-                                    "parentUUID": "aeb9d6f0-3ed4-47b3-af77-a3dc4229e34d",
+                                    "uuid": "27bd2ae8-8aaf-485e-9656-fd81ef513b0a",
+                                    "parentUUID": "f4ec048b-3540-4f69-9687-1757bfa54b51",
                                     "isHook": false,
                                     "skipped": false
                                 }
                             ],
                             "suites": [],
                             "passes": [
-                                "b6555178-f40d-48c9-97e2-5292a3a8a799"
+                                "27bd2ae8-8aaf-485e-9656-fd81ef513b0a"
                             ],
                             "failures": [],
                             "pending": [],
                             "skipped": [],
-                            "duration": 113,
+                            "duration": 125,
                             "root": false,
                             "rootEmpty": false,
                             "_timeout": 2000
                         },
                         {
-                            "uuid": "80a9cfdf-667b-4722-b8a7-204d4131fba3",
+                            "uuid": "775227c9-f9d2-4ea4-bf91-800f431424cd",
                             "title": "refreshJwt",
                             "fullFile": "/home/rich/integrify/1_PLUS/api-auth/test/integration/functions/auth.test.js",
                             "file": "/test/integration/functions/auth.test.js",
@@ -343,15 +343,15 @@
                                     "context": null,
                                     "code": "let mockRes = await mocks.mockResponse();\nlet loginEvent = await mocks.loginEvent()\nlet logoutEvent = await mocks.logoutEvent()\nawait dbauth.login(loginEvent, mockRes);\nconst contactInfo = mockRes.body;\nlogoutEvent.cookies = {\"integrifyRefreshToken\": contactInfo.refreshToken };\nlogoutEvent.body = {token: contactInfo.token, refreshToken: contactInfo.refreshToken }\nawait jwtFuncs.refreshJwt(logoutEvent, await mocks.mockResponse());\nexpect(mockRes.statusCode).equal(200);\nexpect(mockRes.body).to.exist;",
                                     "err": {},
-                                    "uuid": "60358298-1c62-4256-991f-9678eefbd9bc",
-                                    "parentUUID": "80a9cfdf-667b-4722-b8a7-204d4131fba3",
+                                    "uuid": "52ac57f1-499d-4065-b457-9040ad7d46c8",
+                                    "parentUUID": "775227c9-f9d2-4ea4-bf91-800f431424cd",
                                     "isHook": false,
                                     "skipped": false
                                 }
                             ],
                             "suites": [],
                             "passes": [
-                                "60358298-1c62-4256-991f-9678eefbd9bc"
+                                "52ac57f1-499d-4065-b457-9040ad7d46c8"
                             ],
                             "failures": [],
                             "pending": [],
@@ -362,7 +362,7 @@
                             "_timeout": 2000
                         },
                         {
-                            "uuid": "4d558750-756c-458b-86a5-156cfa1c2c2d",
+                            "uuid": "9171bc9a-f0fd-44c9-b394-7609abb6b2ca",
                             "title": "isAuthenticated",
                             "fullFile": "/home/rich/integrify/1_PLUS/api-auth/test/integration/functions/auth.test.js",
                             "file": "/test/integration/functions/auth.test.js",
@@ -382,15 +382,15 @@
                                     "context": null,
                                     "code": "let mockRes = await mocks.mockResponse();\n\nawait jwtFuncs.isAuthenticated({cookies: {integrifyToken: \"fake\"}}, mockRes);\nexpect(mockRes.statusCode).equal(200);\nexpect(mockRes.body).to.exist;",
                                     "err": {},
-                                    "uuid": "6b80f7f8-246e-421e-9922-b1f0db1dc1ac",
-                                    "parentUUID": "4d558750-756c-458b-86a5-156cfa1c2c2d",
+                                    "uuid": "5e10794f-5814-4456-8001-123bb8348ba4",
+                                    "parentUUID": "9171bc9a-f0fd-44c9-b394-7609abb6b2ca",
                                     "isHook": false,
                                     "skipped": false
                                 }
                             ],
                             "suites": [],
                             "passes": [
-                                "6b80f7f8-246e-421e-9922-b1f0db1dc1ac"
+                                "5e10794f-5814-4456-8001-123bb8348ba4"
                             ],
                             "failures": [],
                             "pending": [],
@@ -401,7 +401,7 @@
                             "_timeout": 2000
                         },
                         {
-                            "uuid": "b28ec19f-4111-4fb4-bf22-01a9856907de",
+                            "uuid": "23e4e7b6-70a1-4877-aeed-ec1c6333c6a3",
                             "title": "logout",
                             "fullFile": "/home/rich/integrify/1_PLUS/api-auth/test/integration/functions/auth.test.js",
                             "file": "/test/integration/functions/auth.test.js",
@@ -421,15 +421,15 @@
                                     "context": null,
                                     "code": "const mockRes = await mocks.mockResponse();\nlet logoutEvent = await mocks.logoutEvent()\nawait dbauth.logout(logoutEvent, mockRes);\nexpect(mockRes.statusCode).equal(200);\nexpect(mockRes.body).to.exist;\nexpect(mockRes.body).to.deep.equal({message: 'OK'});",
                                     "err": {},
-                                    "uuid": "54d957af-8e5e-4b4f-9dd5-dad91a4c335f",
-                                    "parentUUID": "b28ec19f-4111-4fb4-bf22-01a9856907de",
+                                    "uuid": "316f2522-70c9-4ef1-afdb-04eab835a434",
+                                    "parentUUID": "23e4e7b6-70a1-4877-aeed-ec1c6333c6a3",
                                     "isHook": false,
                                     "skipped": false
                                 }
                             ],
                             "suites": [],
                             "passes": [
-                                "54d957af-8e5e-4b4f-9dd5-dad91a4c335f"
+                                "316f2522-70c9-4ef1-afdb-04eab835a434"
                             ],
                             "failures": [],
                             "pending": [],
@@ -450,7 +450,7 @@
                     "_timeout": 2000
                 },
                 {
-                    "uuid": "8a20bc03-34bc-4285-9497-579d8dc21dbe",
+                    "uuid": "c17bca02-eeee-40d0-a978-826e12168ae8",
                     "title": "Auth API Reset Password Tests",
                     "fullFile": "/home/rich/integrify/1_PLUS/api-auth/test/integration/functions/resetPassword.test.js",
                     "file": "/test/integration/functions/resetPassword.test.js",
@@ -459,7 +459,7 @@
                             "title": "\"before all\" hook in \"Auth API Reset Password Tests\"",
                             "fullTitle": "Auth API Reset Password Tests \"before all\" hook in \"Auth API Reset Password Tests\"",
                             "timedOut": false,
-                            "duration": 0,
+                            "duration": 1,
                             "state": null,
                             "speed": null,
                             "pass": false,
@@ -468,8 +468,8 @@
                             "context": null,
                             "code": "this.timeout(1050000);\nprocess.env.TESTING = true;\nresetRewired.__set__('nodemailer', nodemailerMock);",
                             "err": {},
-                            "uuid": "b990f3b3-2f3a-4b70-aaad-1fa83cdce868",
-                            "parentUUID": "8a20bc03-34bc-4285-9497-579d8dc21dbe",
+                            "uuid": "c462bae1-9540-40ac-943e-afdf74aeea33",
+                            "parentUUID": "c17bca02-eeee-40d0-a978-826e12168ae8",
                             "isHook": true,
                             "skipped": false
                         }
@@ -478,7 +478,7 @@
                     "tests": [],
                     "suites": [
                         {
-                            "uuid": "e0a8901b-c73e-4645-bb25-8b9a4fb8c542",
+                            "uuid": "1313f476-d382-4235-87d6-26f902bd2c91",
                             "title": "emailUsernames",
                             "fullFile": "/home/rich/integrify/1_PLUS/api-auth/test/integration/functions/resetPassword.test.js",
                             "file": "/test/integration/functions/resetPassword.test.js",
@@ -498,15 +498,15 @@
                                     "context": null,
                                     "code": "let config = (await Config.getConfig()).test;\n      const accountGuid = config.tenantOne.adminUser.sid;\n      const mockRes = mocks.mockResponse();\n      const mockReq = await mocks.emailUsernames();\n      await resetRewired.emailUsernames(mockReq, mockRes);\n      expect(mockRes.statusCode).equal(200);\n      expect(mockRes.body).to.exist;",
                                     "err": {},
-                                    "uuid": "6e56bb3e-8cf5-4bcd-807d-c64679967d8b",
-                                    "parentUUID": "e0a8901b-c73e-4645-bb25-8b9a4fb8c542",
+                                    "uuid": "e4b6aaa9-0ff7-480a-8888-6341368c29ec",
+                                    "parentUUID": "1313f476-d382-4235-87d6-26f902bd2c91",
                                     "isHook": false,
                                     "skipped": false
                                 }
                             ],
                             "suites": [],
                             "passes": [
-                                "6e56bb3e-8cf5-4bcd-807d-c64679967d8b"
+                                "e4b6aaa9-0ff7-480a-8888-6341368c29ec"
                             ],
                             "failures": [],
                             "pending": [],
@@ -517,7 +517,7 @@
                             "_timeout": 2000
                         },
                         {
-                            "uuid": "4c20a362-e0c4-4636-8f0a-8f265e4a2d17",
+                            "uuid": "3959dc45-6854-4f31-b0ef-95d00e224109",
                             "title": "passwordReset",
                             "fullFile": "/home/rich/integrify/1_PLUS/api-auth/test/integration/functions/resetPassword.test.js",
                             "file": "/test/integration/functions/resetPassword.test.js",
@@ -535,8 +535,8 @@
                                     "context": null,
                                     "code": "resetRewired.__set__('nodemailer', nodemailerMock);",
                                     "err": {},
-                                    "uuid": "86153c1c-6974-4ab5-9746-e2989c9dada9",
-                                    "parentUUID": "4c20a362-e0c4-4636-8f0a-8f265e4a2d17",
+                                    "uuid": "a46d0f92-bd54-4961-b45f-707656dc8f03",
+                                    "parentUUID": "3959dc45-6854-4f31-b0ef-95d00e224109",
                                     "isHook": true,
                                     "skipped": false
                                 }
@@ -556,15 +556,15 @@
                                     "context": null,
                                     "code": "let config = (await Config.getConfig()).test;\nconst accountGuid = config.tenantOne.adminUser.sid;\nconst mockRes = mocks.mockResponse();\nconst mockReq = await mocks.emailPasswordReset();\nconsole.log(\"accountguid: \" + accountGuid);\nawait resetRewired.emailPasswordReset(mockReq, mockRes);\n// check if security token was added to redis\nconst securityToken = await redisClient.getAsync(`pwReset:${accountGuid}`);\nconst accountEntry = await redisClient.getAsync(`pwReset:${securityToken}`);\nexpect(mockRes.statusCode).equal(200);\nexpect(mockRes.body).to.exist;\nexpect(securityToken).to.exist;\nexpect(accountEntry).to.exist;\n// clean up entries leftover from calling emailPasswordReset\nawait redisClient.del(`pwReset:${accountGuid}`);\nawait redisClient.del(`pwReset:${securityToken}`);",
                                     "err": {},
-                                    "uuid": "52aae683-8aa7-4c56-abcc-fcedb1d66719",
-                                    "parentUUID": "4c20a362-e0c4-4636-8f0a-8f265e4a2d17",
+                                    "uuid": "5cf35e50-9029-4474-a188-3adebe1fcdee",
+                                    "parentUUID": "3959dc45-6854-4f31-b0ef-95d00e224109",
                                     "isHook": false,
                                     "skipped": false
                                 }
                             ],
                             "suites": [],
                             "passes": [
-                                "52aae683-8aa7-4c56-abcc-fcedb1d66719"
+                                "5cf35e50-9029-4474-a188-3adebe1fcdee"
                             ],
                             "failures": [],
                             "pending": [],
@@ -585,7 +585,7 @@
                     "_timeout": 2000
                 },
                 {
-                    "uuid": "2c78d520-9e57-423b-bd15-0faf7da21ada",
+                    "uuid": "b9272a4c-bc42-4917-983f-74d82c76b33e",
                     "title": "Auth SAML Settings Tests",
                     "fullFile": "/home/rich/integrify/1_PLUS/api-auth/test/integration/functions/samlSettings.test.js",
                     "file": "/test/integration/functions/samlSettings.test.js",
@@ -594,7 +594,7 @@
                             "title": "\"before all\" hook in \"Auth SAML Settings Tests\"",
                             "fullTitle": "Auth SAML Settings Tests \"before all\" hook in \"Auth SAML Settings Tests\"",
                             "timedOut": false,
-                            "duration": 1,
+                            "duration": 0,
                             "state": null,
                             "speed": null,
                             "pass": false,
@@ -603,8 +603,8 @@
                             "context": null,
                             "code": "this.timeout(105000);\ntestConfig = await mocks.getTestConfig()",
                             "err": {},
-                            "uuid": "869fb038-bc75-42fd-8077-9676e84ad7de",
-                            "parentUUID": "2c78d520-9e57-423b-bd15-0faf7da21ada",
+                            "uuid": "22ad9d89-6390-4e33-9265-9d980a9bca3f",
+                            "parentUUID": "b9272a4c-bc42-4917-983f-74d82c76b33e",
                             "isHook": true,
                             "skipped": false
                         }
@@ -623,8 +623,8 @@
                             "context": null,
                             "code": "let deleted = await samlSettings.deleteSamlSettingsByName(testConfig.tenantOne.tenantId, 'unitTestIDP')",
                             "err": {},
-                            "uuid": "c8d2e9fe-e280-4b9d-86fe-4243cac918cf",
-                            "parentUUID": "2c78d520-9e57-423b-bd15-0faf7da21ada",
+                            "uuid": "f2b47617-1647-4403-8acb-5f92bbc09e2d",
+                            "parentUUID": "b9272a4c-bc42-4917-983f-74d82c76b33e",
                             "isHook": true,
                             "skipped": false
                         }
@@ -632,7 +632,7 @@
                     "tests": [],
                     "suites": [
                         {
-                            "uuid": "bda47611-5c6f-4223-8747-afb495a368e4",
+                            "uuid": "c57776ab-1d89-4979-90df-76893687c26f",
                             "title": "SAML Settings crud ",
                             "fullFile": "/home/rich/integrify/1_PLUS/api-auth/test/integration/functions/samlSettings.test.js",
                             "file": "/test/integration/functions/samlSettings.test.js",
@@ -652,86 +652,14 @@
                                     "context": null,
                                     "code": "const mockRes = await mocks.mockResponse();\nconst req = await mocks.req();\n           \nreq.body = data;\nawait samlSettings.createSamlSettings(req, mockRes);\nexpect(mockRes.statusCode).to.equal(200);\nconst inserted = mockRes.body;\n\nsamlId = inserted._id;\nexpect(inserted).to.exist;\nexpect(inserted.idpMetaData).to.equal(data.idpMetaData);\nexpect(inserted.idpName).to.equal(data.idpName);\nexpect(inserted.idpDescription).to.equal(data.idpDescription);\nexpect(inserted.createdByDetail).to.exist;",
                                     "err": {},
-                                    "uuid": "d39fbe37-d40e-4d63-a358-6630d2e2e785",
-                                    "parentUUID": "bda47611-5c6f-4223-8747-afb495a368e4",
+                                    "uuid": "b9b7c952-4ed7-4ee5-b711-9bcfea397de0",
+                                    "parentUUID": "c57776ab-1d89-4979-90df-76893687c26f",
                                     "isHook": false,
                                     "skipped": false
                                 },
                                 {
                                     "title": "should get saml settings without an id",
                                     "fullTitle": "Auth SAML Settings Tests SAML Settings crud  should get saml settings without an id",
-                                    "timedOut": false,
-                                    "duration": 3,
-                                    "state": "passed",
-                                    "speed": "fast",
-                                    "pass": true,
-                                    "fail": false,
-                                    "pending": false,
-                                    "context": null,
-                                    "code": "const mockRes = await mocks.mockResponse();\nconst req = await mocks.req();\nawait samlSettings.getSamlSettings(req, mockRes);\nexpect(mockRes.statusCode).to.equal(200);\nconst result = mockRes.body;\nexpect(result.idpName).to.exist;",
-                                    "err": {},
-                                    "uuid": "fd10e4dd-98ba-491b-8f77-67c4f74baed0",
-                                    "parentUUID": "bda47611-5c6f-4223-8747-afb495a368e4",
-                                    "isHook": false,
-                                    "skipped": false
-                                },
-                                {
-                                    "title": "should get saml settings with an id",
-                                    "fullTitle": "Auth SAML Settings Tests SAML Settings crud  should get saml settings with an id",
-                                    "timedOut": false,
-                                    "duration": 2,
-                                    "state": "passed",
-                                    "speed": "fast",
-                                    "pass": true,
-                                    "fail": false,
-                                    "pending": false,
-                                    "context": null,
-                                    "code": "const mockRes = await mocks.mockResponse();\nconst req = await mocks.req();\nreq.params.samlId = samlId;\nawait samlSettings.getSamlSettings(req, mockRes);\nexpect(mockRes.statusCode).to.equal(200);\nconst result = mockRes.body;\nexpect(result._id.toString()).to.equal(samlId.toString());",
-                                    "err": {},
-                                    "uuid": "75abcffd-5080-475d-a8fb-a8b510f5840c",
-                                    "parentUUID": "bda47611-5c6f-4223-8747-afb495a368e4",
-                                    "isHook": false,
-                                    "skipped": false
-                                },
-                                {
-                                    "title": "should update saml settings",
-                                    "fullTitle": "Auth SAML Settings Tests SAML Settings crud  should update saml settings",
-                                    "timedOut": false,
-                                    "duration": 10,
-                                    "state": "passed",
-                                    "speed": "fast",
-                                    "pass": true,
-                                    "fail": false,
-                                    "pending": false,
-                                    "context": null,
-                                    "code": "const mockRes = await mocks.mockResponse();\nconst req = await mocks.req();\nreq.params.samlId = samlId;\n\nreq.body = data;\n\nawait samlSettings.updateSamlSettings(req, mockRes);\nexpect(mockRes.statusCode).to.equal(200);\nconst result = mockRes.body;\nexpect(result).to.exist;",
-                                    "err": {},
-                                    "uuid": "eae618a7-6ed8-44b1-809f-763a77cdb036",
-                                    "parentUUID": "bda47611-5c6f-4223-8747-afb495a368e4",
-                                    "isHook": false,
-                                    "skipped": false
-                                },
-                                {
-                                    "title": "should return sp metadata",
-                                    "fullTitle": "Auth SAML Settings Tests SAML Settings crud  should return sp metadata",
-                                    "timedOut": false,
-                                    "duration": 19,
-                                    "state": "passed",
-                                    "speed": "fast",
-                                    "pass": true,
-                                    "fail": false,
-                                    "pending": false,
-                                    "context": null,
-                                    "code": "const mockRes = await mocks.mockResponse();\nconst req = await mocks.req();\nreq.params.tenant = testConfig.tenantOne.tenantId;\nawait samlSettings.getMetaData(req, mockRes);\nexpect(mockRes.statusCode).to.equal(200);\nconst metadata = mockRes.body;\nexpect(metadata).to.exist;",
-                                    "err": {},
-                                    "uuid": "25a8b32c-9772-4387-89c0-35b46476fe77",
-                                    "parentUUID": "bda47611-5c6f-4223-8747-afb495a368e4",
-                                    "isHook": false,
-                                    "skipped": false
-                                },
-                                {
-                                    "title": "should delete saml settings",
-                                    "fullTitle": "Auth SAML Settings Tests SAML Settings crud  should delete saml settings",
                                     "timedOut": false,
                                     "duration": 5,
                                     "state": "passed",
@@ -740,27 +668,99 @@
                                     "fail": false,
                                     "pending": false,
                                     "context": null,
+                                    "code": "const mockRes = await mocks.mockResponse();\nconst req = await mocks.req();\nawait samlSettings.getSamlSettings(req, mockRes);\nexpect(mockRes.statusCode).to.equal(200);\nconst result = mockRes.body;\nexpect(result.idpName).to.exist;",
+                                    "err": {},
+                                    "uuid": "8b050acd-2bd2-4181-8d38-26405155039f",
+                                    "parentUUID": "c57776ab-1d89-4979-90df-76893687c26f",
+                                    "isHook": false,
+                                    "skipped": false
+                                },
+                                {
+                                    "title": "should get saml settings with an id",
+                                    "fullTitle": "Auth SAML Settings Tests SAML Settings crud  should get saml settings with an id",
+                                    "timedOut": false,
+                                    "duration": 3,
+                                    "state": "passed",
+                                    "speed": "fast",
+                                    "pass": true,
+                                    "fail": false,
+                                    "pending": false,
+                                    "context": null,
+                                    "code": "const mockRes = await mocks.mockResponse();\nconst req = await mocks.req();\nreq.params.samlId = samlId;\nawait samlSettings.getSamlSettings(req, mockRes);\nexpect(mockRes.statusCode).to.equal(200);\nconst result = mockRes.body;\nexpect(result._id.toString()).to.equal(samlId.toString());",
+                                    "err": {},
+                                    "uuid": "b52963ba-69c3-458b-9489-c25cdb4cac1d",
+                                    "parentUUID": "c57776ab-1d89-4979-90df-76893687c26f",
+                                    "isHook": false,
+                                    "skipped": false
+                                },
+                                {
+                                    "title": "should update saml settings",
+                                    "fullTitle": "Auth SAML Settings Tests SAML Settings crud  should update saml settings",
+                                    "timedOut": false,
+                                    "duration": 11,
+                                    "state": "passed",
+                                    "speed": "fast",
+                                    "pass": true,
+                                    "fail": false,
+                                    "pending": false,
+                                    "context": null,
+                                    "code": "const mockRes = await mocks.mockResponse();\nconst req = await mocks.req();\nreq.params.samlId = samlId;\n\nreq.body = data;\n\nawait samlSettings.updateSamlSettings(req, mockRes);\nexpect(mockRes.statusCode).to.equal(200);\nconst result = mockRes.body;\nexpect(result).to.exist;",
+                                    "err": {},
+                                    "uuid": "436fb45a-8daf-4a43-8581-1868b01cbc11",
+                                    "parentUUID": "c57776ab-1d89-4979-90df-76893687c26f",
+                                    "isHook": false,
+                                    "skipped": false
+                                },
+                                {
+                                    "title": "should return sp metadata",
+                                    "fullTitle": "Auth SAML Settings Tests SAML Settings crud  should return sp metadata",
+                                    "timedOut": false,
+                                    "duration": 25,
+                                    "state": "passed",
+                                    "speed": "fast",
+                                    "pass": true,
+                                    "fail": false,
+                                    "pending": false,
+                                    "context": null,
+                                    "code": "const mockRes = await mocks.mockResponse();\nconst req = await mocks.req();\nreq.params.tenant = testConfig.tenantOne.tenantId;\nawait samlSettings.getMetaData(req, mockRes);\nexpect(mockRes.statusCode).to.equal(200);\nconst metadata = mockRes.body;\nexpect(metadata).to.exist;",
+                                    "err": {},
+                                    "uuid": "6a91e715-f2df-402a-ba4c-122f6acaed86",
+                                    "parentUUID": "c57776ab-1d89-4979-90df-76893687c26f",
+                                    "isHook": false,
+                                    "skipped": false
+                                },
+                                {
+                                    "title": "should delete saml settings",
+                                    "fullTitle": "Auth SAML Settings Tests SAML Settings crud  should delete saml settings",
+                                    "timedOut": false,
+                                    "duration": 6,
+                                    "state": "passed",
+                                    "speed": "fast",
+                                    "pass": true,
+                                    "fail": false,
+                                    "pending": false,
+                                    "context": null,
                                     "code": "const mockRes = await mocks.mockResponse();\nconst req = await mocks.req();\nreq.params.samlId = samlId;\nawait samlSettings.deleteSamlSettings(req, mockRes);\nexpect(mockRes.statusCode).to.equal(200);\nconst deleted = mockRes.body;\nexpect(deleted.message).to.equal(\"delete successful\");",
                                     "err": {},
-                                    "uuid": "08b66cc5-7e74-441d-bd2e-2198b96e1052",
-                                    "parentUUID": "bda47611-5c6f-4223-8747-afb495a368e4",
+                                    "uuid": "75ece65d-1b43-48ba-b0dc-39a4373e319d",
+                                    "parentUUID": "c57776ab-1d89-4979-90df-76893687c26f",
                                     "isHook": false,
                                     "skipped": false
                                 }
                             ],
                             "suites": [],
                             "passes": [
-                                "d39fbe37-d40e-4d63-a358-6630d2e2e785",
-                                "fd10e4dd-98ba-491b-8f77-67c4f74baed0",
-                                "75abcffd-5080-475d-a8fb-a8b510f5840c",
-                                "eae618a7-6ed8-44b1-809f-763a77cdb036",
-                                "25a8b32c-9772-4387-89c0-35b46476fe77",
-                                "08b66cc5-7e74-441d-bd2e-2198b96e1052"
+                                "b9b7c952-4ed7-4ee5-b711-9bcfea397de0",
+                                "8b050acd-2bd2-4181-8d38-26405155039f",
+                                "b52963ba-69c3-458b-9489-c25cdb4cac1d",
+                                "436fb45a-8daf-4a43-8581-1868b01cbc11",
+                                "6a91e715-f2df-402a-ba4c-122f6acaed86",
+                                "75ece65d-1b43-48ba-b0dc-39a4373e319d"
                             ],
                             "failures": [],
                             "pending": [],
                             "skipped": [],
-                            "duration": 45,
+                            "duration": 56,
                             "root": false,
                             "rootEmpty": false,
                             "_timeout": 2000
@@ -780,7 +780,7 @@
             "failures": [],
             "pending": [],
             "skipped": [
-                "0435ac72-403d-4d92-b2ca-d91089a3d849"
+                "74c1afd7-285b-43aa-9e25-921fd78c3f69"
             ],
             "duration": 0,
             "root": true,
