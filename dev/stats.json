@@ -1,0 +1,17 @@
+{
+    "suites": 1,
+    "tests": 19,
+    "passes": 18,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-12-17T16:21:44.396Z",
+    "end": "2020-12-17T16:21:44.396Z",
+    "duration": 514,
+    "testsRegistered": 19,
+    "passPercent": 94.73684210526316,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 1,
+    "hasSkipped": true
+}
