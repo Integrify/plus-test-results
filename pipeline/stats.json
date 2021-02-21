@@ -1,0 +1,17 @@
+{
+    "suites": 15,
+    "tests": 411,
+    "passes": 381,
+    "pending": 0,
+    "failures": 24,
+    "start": "2021-02-21T21:45:09.825Z",
+    "end": "2021-02-21T21:45:09.825Z",
+    "duration": 87621,
+    "testsRegistered": 411,
+    "passPercent": 92.7007299270073,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 6,
+    "hasSkipped": true
+}
